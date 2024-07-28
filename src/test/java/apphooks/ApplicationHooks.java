@@ -21,12 +21,14 @@ public class ApplicationHooks {
 	
 	@Before(order=0)
 	public void loadConfig() {
+		reader = new ConfigReader();
 		prop = reader.getProperties();
 	}
 	
 	@Before(order=1)
 	public void initDriver() {
 		String browser = prop.getProperty("browser");
+		driverFactory = new DriverFactory();
 		driverFactory.initDriver(browser);
 	}
 	

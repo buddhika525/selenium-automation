@@ -1,51 +1,62 @@
 package stepdefinitions;
 
+
+import com.pages.LoginPage;
+import com.qa.factory.DriverFactory;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import junit.framework.Assert;
+
 
 public class LoginSteps {
+	
+	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
+	String title = null;
 	
 	@Given("user is on the login page")
 	public void user_is_on_the_login_page() {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    DriverFactory.getDriver().get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    
 	}
 
 	@When("user checks the title of the page")
 	public void user_checks_the_title_of_the_page() {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		title = loginPage.getLoginTitle();
 	}
 
 	@Then("page title should be {string}")
-	public void page_title_should_be(String string) {
+	public void page_title_should_be(String pagetitle) {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    //Assert.assertTrue(title.equals(pagetitle));
+		Assert.assertEquals(title, pagetitle);
 	}
 
 	@Then("forgot passowrd link should be displayed")
 	public void forgot_passowrd_link_should_be_displayed() {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    Assert.assertTrue(loginPage.isForgetPWLinkDisplayed());
 	}
 
 	@When("user enters the username {string}")
-	public void user_enters_the_username(String string) {
+	public void user_enters_the_username(String username) {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    loginPage.enterUsername(username);
 	}
 
 	@When("user enters the password {string}")
-	public void user_enters_the_password(String string) {
+	public void user_enters_the_password(String password) {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    loginPage.enterPassword(password);
 	}
 
 	@When("user clicks on Login button")
 	public void user_clicks_on_login_button() {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    loginPage.enterLoginButton();
 	}
 
 	@Then("user should be directed to the {string} page")
