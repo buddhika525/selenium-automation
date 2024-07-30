@@ -12,20 +12,16 @@ public class ConfigReader {
 	//load properties from config.properties file
 	public Properties getProperties() {
 		prop = new Properties();
-		FileInputStream in;
+		
 		try {
-			in = new FileInputStream("src/test/resources/config/config.properties");
-			try {
-				prop.load(in);
-				System.out.println(prop);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			FileInputStream in = new FileInputStream("src/test/resources/config/config.properties");
+			prop.load(in);
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
 			e.printStackTrace();
 		}
+		
 		
 		return prop;
 	}

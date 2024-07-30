@@ -1,6 +1,10 @@
 package stepdefinitions;
 
 
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+
 import com.pages.LoginPage;
 import com.qa.factory.DriverFactory;
 
@@ -13,13 +17,16 @@ import junit.framework.Assert;
 public class LoginSteps {
 	
 	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-	String title = null;
+	private String title;
+	private WebDriver driver;
 	
 	@Given("user is on the login page")
-	public void user_is_on_the_login_page() {
+	public void user_is_on_the_login_page() throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
-	    DriverFactory.getDriver().get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-	    
+	    driver = DriverFactory.getDriver();
+	    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    //added explicit wait for the login page to load
+	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 	}
 
 	@When("user checks the title of the page")

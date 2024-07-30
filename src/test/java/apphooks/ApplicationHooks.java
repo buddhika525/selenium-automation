@@ -15,9 +15,9 @@ import io.cucumber.java.Scenario;
 public class ApplicationHooks {
 	
 	private DriverFactory driverFactory;
+	private WebDriver driver;
 	private ConfigReader reader;
 	Properties prop;
-	WebDriver driver;
 	
 	@Before(order=0)
 	public void loadConfig() {
@@ -29,7 +29,7 @@ public class ApplicationHooks {
 	public void initDriver() {
 		String browser = prop.getProperty("browser");
 		driverFactory = new DriverFactory();
-		driverFactory.initDriver(browser);
+		driver = driverFactory.initDriver(browser);
 	}
 	
 	@After(order=0)

@@ -21,13 +21,13 @@ public class LoginPage {
 	@FindBy(how=How.NAME, using="password")
 	WebElement password;
 	
-	@FindBy(how=How.CLASS_NAME, using="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button")
+	@FindBy(how=How.XPATH, using="//button[@type='submit']") 
 	WebElement loginButton;
 	
-	@FindBy(how=How.CLASS_NAME, using="oxd-text oxd-text--p orangehrm-login-forgot-header")
+	@FindBy(how=How.CSS, using=".oxd-text.oxd-text--p.orangehrm-login-forgot-header")
 	WebElement forgotPasswordLink;
 	
-	@FindBy(how=How.CLASS_NAME, using="oxd-text oxd-text--h5 orangehrm-login-title")
+	@FindBy(how=How.CSS, using=".oxd-text.oxd-text--h5.orangehrm-login-title")
 	WebElement loginTitle;
 	
 	
