@@ -26,7 +26,7 @@ public class LoginSteps {
 	    driver = DriverFactory.getDriver();
 	    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 	    //added explicit wait for the login page to load
-	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	    //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 	}
 
 	@When("user checks the title of the page")

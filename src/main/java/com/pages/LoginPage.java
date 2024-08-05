@@ -6,12 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
 	
 	WebDriver driver;
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		getDriverWait(driver);
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -32,23 +33,24 @@ public class LoginPage {
 	
 	
 	public void enterUsername(String name) {
-		username.sendKeys(name);
+		//username.sendKeys(name);
+		sendKeys(username, name);
 	}
 	
 	public void enterPassword(String passwd) {
-		password.sendKeys(passwd);
+		sendKeys(password,passwd);
 	}
 	
 	public String getLoginTitle() {
-		return loginTitle.getText();
+		return getText(loginTitle);
 	}
 	
 	public boolean isForgetPWLinkDisplayed() {
-		return forgotPasswordLink.isDisplayed();
+		return isDisplayed(forgotPasswordLink);
 	}
 	
 	public void enterLoginButton() {
-		loginButton.click();
+		click(loginButton);
 	}
 	
 	
