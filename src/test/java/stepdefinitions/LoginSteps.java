@@ -5,6 +5,9 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 
+import com.lib.Base;
+import com.pages.BasePage;
+import com.pages.DashboardPage;
 import com.pages.LoginPage;
 import com.qa.factory.DriverFactory;
 
@@ -14,9 +17,10 @@ import io.cucumber.java.en.When;
 import junit.framework.Assert;
 
 
-public class LoginSteps {
+public class LoginSteps extends Base{
 	
 	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
+	private DashboardPage dashboardPage = new DashboardPage(DriverFactory.getDriver());
 	private String title;
 	private WebDriver driver;
 	
@@ -24,7 +28,9 @@ public class LoginSteps {
 	public void user_is_on_the_login_page() throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
 	    driver = DriverFactory.getDriver();
-	    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    getURL(driver, "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    //loginPage.getSiteURL("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    //driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 	    //added explicit wait for the login page to load
 	    //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 	}
@@ -64,12 +70,13 @@ public class LoginSteps {
 	public void user_clicks_on_login_button() {
 	    // Write code here that turns the phrase above into concrete actions
 	    loginPage.enterLoginButton();
+	    
 	}
 
 	@Then("user should be directed to the {string} page")
-	public void user_should_be_directed_to_the_page(String string) {
+	public void user_should_be_directed_to_the_page(String dashboardText) {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    Assert.assertEquals(dashboardText, dashboardPage.getDashboardText());
 	}
 
 

@@ -49,9 +49,8 @@ public class LoginPage extends BasePage{
 		return isDisplayed(forgotPasswordLink);
 	}
 	
-	public void enterLoginButton() {
+	public DashboardPage enterLoginButton() {
 		click(loginButton);
+		return new DashboardPage(driver);
 	}
-	
-	
 }
