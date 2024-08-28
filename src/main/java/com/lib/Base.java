@@ -11,9 +11,14 @@ public class Base {
 	
 	//public WebDriver driver;
 	public WebDriverWait wait;
+	//WebDriver driver;
 	
 	public void getDriverWait(WebDriver driver) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	}
+	
+	public void implicitWait(WebDriver driver) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
 	public void getURL(WebDriver driver, String url) {
@@ -25,7 +30,7 @@ public class Base {
 	}
 	
 	public void click(WebElement element) {
-		wait.until(ExpectedConditions.visibilityOf(element)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 	
 	public boolean isDisplayed(WebElement element) {
@@ -34,6 +39,10 @@ public class Base {
 	
 	public String getText(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+	}
+	
+	public void clear(WebElement element) {
+		wait.until(ExpectedConditions.visibilityOf(element)).clear();
 	}
 
 }
