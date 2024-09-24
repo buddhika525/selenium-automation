@@ -21,24 +21,13 @@ public class DashboardPage extends BasePage{
 	@FindBy(xpath="//i[@class='oxd-icon bi-stopwatch']")
 	WebElement watchIcon;
 	
-	/*
-	@FindBy(xpath="//span[@class='oxd-text oxd-text--span orangehrm-attendance-card-fulltime']")
-	WebElement timeAtWorkToday;
-	
-	
-	@FindBy(xpath="//div[@id='app']/div[1]//div[@class='oxd-layout-context']/div/div[1]/div//span")
-	WebElement timeAtWorkToday;
-	*/
-	
-	//div[@id='app']/div[1]//div[@class='oxd-layout-context']/div/div[1]/div//span/b[.='54m']
 	@FindBy(css=".orangehrm-attendance-card-fulltime.oxd-text.oxd-text--span")
 	WebElement timeAtWorkToday;
 	
-	//b[normalize-space()='9h']
-	//span[@class='oxd-text oxd-text--span orangehrm-attendance-card-fulltime']
+	@FindBy(css = "li:nth-of-type(11) > .oxd-main-menu-item")
+	WebElement claimMenu;
 	
 
-	
 	public String getDashboardText() {
 		return getText(dashboardText);
 	}
@@ -52,6 +41,11 @@ public class DashboardPage extends BasePage{
 		return getText(timeAtWorkToday);
 	}
 	
+	
+	public ClaimsPage clickOnClaims(WebDriver driver) {
+		click(claimMenu);
+		return new ClaimsPage(driver);
+	}
 	
 
 }

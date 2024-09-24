@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features= {"src/test/resources/com/features"},
+		features= {"src/test/resources/com/features/addClaims.feature"},
 		glue= {"stepdefinitions","apphooks"},
 		plugin= {"pretty"}
 		)
