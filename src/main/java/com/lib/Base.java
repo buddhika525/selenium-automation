@@ -5,19 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Base {
 	
-	//public WebDriver driver;
+	public WebDriver driver;
 	public WebDriverWait wait;
 	//WebDriver driver;
 	
+	
 	public void getDriverWait(WebDriver driver) {
+		//this.driver = ldriver;
+		//wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
 	}
 	
 	public void implicitWait(WebDriver driver) {
@@ -48,16 +55,13 @@ public class Base {
 		wait.until(ExpectedConditions.visibilityOf(element)).clear();
 	}
 	
-	public List<WebElement> getElements(By locator){
-		List<WebElement> elem = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-		//List<WebElement> elem2 = wait.until(ExpectedConditions.visibilityOfAllElements(element));
-		System.out.println(elem.get(0).getText());
-		List<String> elemText = new ArrayList<String>();
-		for(int i=0; i< elem.size(); i++) {
-			elemText.add(elem.get(i).getText());
-		}
+	public List<WebElement> getElements(WebElement locator, String name){
 		
+		List<WebElement> elem = wait.until(ExpectedConditions.visibilityOfAllElements(locator));
 		return elem;
 	}
+	
+	public void sleep() throws InterruptedException {
+		Thread.sleep(3000);	}
 
 }

@@ -29,10 +29,6 @@ public class LoginSteps extends Base{
 	    // Write code here that turns the phrase above into concrete actions
 	    driver = DriverFactory.getDriver();
 	    getURL(driver, "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-	    //loginPage.getSiteURL("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-	    //driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-	    //added explicit wait for the login page to load
-	    //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 	}
 
 	@When("user checks the title of the page")

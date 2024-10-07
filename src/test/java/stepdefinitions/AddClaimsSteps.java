@@ -16,7 +16,7 @@ public class AddClaimsSteps {
 	ClaimsPage claims;
 
 	@When("user clicks on claim menu")
-	public void user_clicks_on_claim_menu() {
+	public void user_clicks_on_claim_menu() throws Exception {
 	    // Write code here that turns the phrase above into concrete actions
 		claims = dashboard.clickOnClaims(driver);
 	    
